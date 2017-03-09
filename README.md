@@ -25,10 +25,10 @@ Naszym projektem jest stworzenie gry symulacyjnej polegającej na budowaniu mias
 
 
 ####Harmonogram pracy
-
+- Niewiem
 
 ####Użyte biblioteki
-
+- Dd.dd
 
 ####Wersja Java
 Java 8u121
