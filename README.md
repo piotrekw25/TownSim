@@ -5,7 +5,8 @@ Symulator budowy miasta
 Naszym projektem jest stworzenie gry symulatorowej polegającej na budowaniu miasta
 
 ####Planowane funkcje gry
-
+- Symulacja życia obywateli miasta (płeć, wiek, edukacja, zawód, miejsce zamieszkania, miejsce pracy, rodzina)
+- Symulacja ruchu drogowego
 
 ####Harmonogram pracy
 
