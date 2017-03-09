@@ -2,7 +2,7 @@
 Symulator budowy miasta
 
 ####O projekcie
-Naszym projektem jest stworzenie gry symulatorowej polegającej na budowaniu miasta w widoku 2d z góry
+Naszym projektem jest stworzenie gry symulacyjnej polegającej na budowaniu miasta w widoku 2d z góry
 
 ####Planowane funkcje gry
 - Symulacja życia obywateli miasta 
@@ -20,7 +20,7 @@ Naszym projektem jest stworzenie gry symulatorowej polegającej na budowaniu mia
   * sklepy oraz obszary przemysłowe wymieniają się towarami, importują i eksportują je
 - Transport masowy
   * mieszkańcy mogą skorzystać z autobusów lub pociągów aby dojechać do celu
-  * klepy oraz przemysł mogą korzystać z pociągów do transportu towarów
+  * sklepy oraz przemysł mogą korzystać z pociągów do transportu towarów
 
 
 
