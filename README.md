@@ -6,21 +6,21 @@ Naszym projektem jest stworzenie gry symulatorowej polegającej na budowaniu mia
 
 ####Planowane funkcje gry
 - Symulacja życia obywateli miasta 
-  -płeć, wiek, edukacja, zawód, miejsce zamieszkania, miejsce pracy, rodzina, zadowolenie z życia w mieście
+  * płeć, wiek, edukacja, zawód, miejsce zamieszkania, miejsce pracy, rodzina, zadowolenie z życia w mieście
 - Budowa dróg dwupasmowych i czteropasmowych i jednokierunkowych
 - Budowa usług publicznych
-  -szpitale, straż pożarna, policja
-  -szkoły
-  -elektrownie i pompy wodne z rurociągami
-  -wywóz śmieci z budynków
-  -parki, pomniki
+  * szpitale, straż pożarna, policja
+  * szkoły
+  * elektrownie i pompy wodne z rurociągami
+  * wywóz śmieci z budynków
+  * parki, pomniki
 - Wyznaczanie stref to automatycznej generacji mieszkań, sklepów i przemysłu.
 - Symulacja ruchu drogowego
-  -mieszkańcy muszą dojechać do pracy, sklepów i szkół
-  -sklepy oraz obszary przemysłowe wymieniają się towarami, importują i eksportują je
+  * mieszkańcy muszą dojechać do pracy, sklepów i szkół
+  * sklepy oraz obszary przemysłowe wymieniają się towarami, importują i eksportują je
 - Transport masowy
-  -mieszkańcy mogą skorzystać z autobusów lub pociągów aby dojechać do celu
-  -sklepy oraz przemysł mogą korzystać z pociągów do transportu towarów
+  * mieszkańcy mogą skorzystać z autobusów lub pociągów aby dojechać do celu
+  * klepy oraz przemysł mogą korzystać z pociągów do transportu towarów
 
 
 
