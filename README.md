@@ -25,12 +25,12 @@ Naszym projektem jest stworzenie gry symulacyjnej polegającej na budowaniu mias
 
 
 ####Harmonogram pracy:
-  *Tydzień 1: Opis projektu
-  *Tydzień 2: Stworzenie menu gry
-  *Tydzień 3:
-  *Tydzień 4:
-  *Tydzień 5:
-  *Tydzień 6:
+ -Tydzień 1: Opis projektu
+-Tydzień 2: Stworzenie menu gry
+-Tydzień 3:
+-Tydzień 4:
+-Tydzień 5:
+-Tydzień 6:
 
 ####Użyte biblioteki
 
