@@ -16,18 +16,19 @@ public class MenuState extends GameState {
 	
 	String[] options;
 	
-	private Color titleColor;
-	private Font titleFont;
-	
 	private Font font;
 
 	private Image logo;
+	private Image button;
 	
 	public MenuState(GameStateManager gsm) {
 		
 		this.gsm = gsm;
 		
 		Lang.init();
+		
+		logo = new ImageIcon("Resources/logo.png").getImage();
+		button = new ImageIcon("Resources/button.png").getImage();
 		
 		options = new String[6];
 		options[0] = Lang.resume;
@@ -42,13 +43,7 @@ public class MenuState extends GameState {
 			bg = new Background("/Backgrounds/bg.jpg", 1);
 			bg.setVector(-0.5, 0);
 			
-			titleColor = new Color(0, 200, 0);
-			titleFont = new Font(
-					"Boulder",
-					Font.PLAIN,
-					100);
-			
-			font = new Font("Boulder", Font.PLAIN, 60);
+			font = new Font("Boulder", Font.PLAIN, 46);
 			
 		}
 		catch(Exception e) {
@@ -69,19 +64,23 @@ public class MenuState extends GameState {
 		bg.draw(g);
 		
 		// draw title
-		logo = new ImageIcon("Resources/logo.png").getImage();
 		g.drawImage(logo, 50, 50, null);
 		
 		// draw menu options
+		
+		
+		
+		
 		g.setFont(font);
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
-				g.setColor(Color.GREEN);
+				g.setColor(Color.ORANGE);
 			}
 			else {
-				g.setColor(Color.RED);
+				g.setColor(Color.BLACK);
 			}
-			g.drawString(options[i], 145, 200 + i * 100);
+			g.drawImage(button, 140, 250 + i * 80, null);
+			g.drawString(options[i], 170, 298 + i * 80);
 		}
 		
 	}
