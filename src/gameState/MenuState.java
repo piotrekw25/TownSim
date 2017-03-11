@@ -3,28 +3,39 @@ package gameState;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+
 import tileMap.Background;
+import main.Lang;
 
 public class MenuState extends GameState {
 	
 	private Background bg;
 	
 	private int currentChoice = 0;
-	private String[] options = {
-		"Start",
-		"Options",
-		"Credits",
-		"Quit"
-	};
+	
+	String[] options;
 	
 	private Color titleColor;
 	private Font titleFont;
 	
 	private Font font;
+
+	private Image logo;
 	
 	public MenuState(GameStateManager gsm) {
 		
 		this.gsm = gsm;
+		
+		Lang.init();
+		
+		options = new String[6];
+		options[0] = Lang.resume;
+		options[1] = Lang.newGame;
+		options[2] = Lang.loadGame;
+		options[3] = Lang.options;
+		options[4] = Lang.credits;
+		options[5] = Lang.quit;
 		
 		try {
 			
@@ -58,9 +69,8 @@ public class MenuState extends GameState {
 		bg.draw(g);
 		
 		// draw title
-		g.setColor(titleColor);
-		g.setFont(titleFont);
-		g.drawString("TownSim", 80, 100);
+		logo = new ImageIcon("Resources/logo.png").getImage();
+		g.drawImage(logo, 50, 50, null);
 		
 		// draw menu options
 		g.setFont(font);
@@ -81,12 +91,18 @@ public class MenuState extends GameState {
 			gsm.setState(GameStateManager.LEVELSTATE);
 		}
 		if(currentChoice == 1) {
-			gsm.setState(GameStateManager.OPTIONSSTATE);
+			gsm.setState(GameStateManager.LEVELSTATE);
 		}
 		if(currentChoice == 2) {
-			gsm.setState(GameStateManager.CREDITSSTATE);
+			gsm.setState(GameStateManager.LEVELSTATE);
 		}
 		if(currentChoice == 3) {
+			gsm.setState(GameStateManager.OPTIONSSTATE);
+		}
+		if(currentChoice == 4) {
+			gsm.setState(GameStateManager.CREDITSSTATE);
+		}
+		if(currentChoice == 5) {
 			System.exit(0);
 		}
 	}

@@ -9,12 +9,12 @@ import javax.swing.JPanel;
 import gameState.GameStateManager;
 
 @SuppressWarnings("serial")
-public class GamePanel extends JPanel 
+public class GamePanel extends JPanel
 	implements Runnable, KeyListener{
 	
 	// dimensions
-	public static final int WIDTH = 800;
-	public static final int HEIGHT = 600;
+	public static final int WIDTH = 1280;
+	public static final int HEIGHT = 800;
 	public static final int SCALE = 1;
 	
 	// game thread
@@ -32,8 +32,6 @@ public class GamePanel extends JPanel
 	
 	public GamePanel() {
 		super();
-		setPreferredSize(
-			new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		setFocusable(true);
 		requestFocus();
 	}
@@ -64,6 +62,7 @@ public class GamePanel extends JPanel
 	public void run() {
 		
 		init();
+		
 		
 		long start;
 		long elapsed;
