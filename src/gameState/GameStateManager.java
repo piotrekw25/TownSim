@@ -15,6 +15,8 @@ public class GameStateManager {
 		
 		gameStates = new GameState[NUMGAMESTATES];
 		
+		MenuImg.LoadMenuImgs();
+		
 		currentState = MENUSTATE;
 		loadState(currentState);
 		

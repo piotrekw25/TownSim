@@ -3,8 +3,6 @@ package gameState;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
-
 import tileMap.Background;
 import main.GamePanel;
 import main.Lang;
@@ -18,10 +16,6 @@ public class OptionsState extends GameState {
 	String[] options;
 	
 	private Font font;
-
-	private Image logo;
-	private Image button;
-	private Image box;
 	
 	public OptionsState(GameStateManager gsm) {
 		
@@ -29,17 +23,13 @@ public class OptionsState extends GameState {
 		
 		Lang.init();
 		
-		logo = new ImageIcon("Resources/UI/logo.png").getImage();
-		button = new ImageIcon("Resources/UI/button.png").getImage();
-		box = new ImageIcon("Resources/UI/box.png").getImage();
-		
 		options = new String[2];
 		options[0] = Lang.language;
 		options[1] = Lang.back;
 		
 		try {
 			
-			bg = new Background("/Backgrounds/bg.jpg", 1);
+			bg = new Background(1);
 			bg.setVector(-0.5, 0);
 			
 			font = new Font("Boulder", Font.PLAIN, 46);
@@ -63,7 +53,7 @@ public class OptionsState extends GameState {
 		bg.draw(g);
 		
 		// draw title
-		g.drawImage(logo, GamePanel.WIDTH/2 - logo.getWidth(null)/2, 50, null);
+		g.drawImage(MenuImg.logo, GamePanel.WIDTH/2 - MenuImg.logo.getWidth(null)/2, 50, null);
 		
 		// draw menu options
 		
@@ -75,13 +65,13 @@ public class OptionsState extends GameState {
 		//Options title
 		g.setFont(font);
 		g.setColor(Color.BLACK);
-		g.drawImage(button, GamePanel.WIDTH/2 - button.getWidth(null)/2, 250, null);
-		g.drawString(Lang.options, (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298);
+		g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250, null);
+		g.drawString(Lang.options, (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298);
 		
 		//Box
-		g.drawImage(box, GamePanel.WIDTH/2 - box.getWidth(null)/2, 250 + 80, null);
-		g.drawString("Piotr Weber", (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + 120);
-		g.drawString("Adam Gawliñski", (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + 2* 90);
+		g.drawImage(MenuImg.box, GamePanel.WIDTH/2 - MenuImg.box.getWidth(null)/2, 250 + 80, null);
+		g.drawString("Piotr Weber", (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 120);
+		g.drawString("Adam Gawliñski", (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 2* 90);
 		
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
@@ -90,8 +80,8 @@ public class OptionsState extends GameState {
 			else {
 				g.setColor(Color.BLACK);
 			}
-			g.drawImage(button, GamePanel.WIDTH/2 - button.getWidth(null)/2, 250 + 350 + i * 80, null);
-			g.drawString(options[i], (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + 350 + i * 80);
+			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350 + i * 80, null);
+			g.drawString(options[i], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350 + i * 80);
 		}
 		
 	}

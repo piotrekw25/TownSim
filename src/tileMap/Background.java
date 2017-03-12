@@ -3,31 +3,27 @@ package tileMap;
 import main.GamePanel;
 
 import java.awt.*;
-import java.awt.image.*;
-import javax.imageio.ImageIO;
+
+import gameState.MenuImg;
 
 public class Background {
-	
-	private BufferedImage image;
 	
 	private double x;
 	private double y;
 	private double dx;
 	private double dy;
 	
+	public static double xLast;
+	public static double yLast;
+	
+	
 	private double moveScale;
 	
-	public Background(String s, double ms) {
+	public Background(double ms) {
 		
-		try {
-			image = ImageIO.read(
-				getClass().getResourceAsStream(s)
-			);
-			moveScale = ms;
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		moveScale = ms;
+		this.x = xLast;
+		this.y = yLast;
 		
 	}
 	
@@ -44,15 +40,19 @@ public class Background {
 	public void update() {
 		x += dx;
 		y += dy;
+		
+		xLast = x;
+		yLast = y;
+		System.out.println(xLast + " " + yLast);
 	}
 	
 	public void draw(Graphics2D g) {
 		
-		g.drawImage(image, (int)x, (int)y, GamePanel.WIDTH, GamePanel.HEIGHT, null);
+		g.drawImage(MenuImg.menuBackgroundScaled, (int)x, (int)y, null);
 		
 		if(x < 0) {
 			g.drawImage(
-				image,
+					MenuImg.menuBackgroundScaled,
 				(int)x + GamePanel.WIDTH,
 				(int)y,
 				GamePanel.WIDTH, GamePanel.HEIGHT,
@@ -61,7 +61,7 @@ public class Background {
 		}
 		if(x > 0) {
 			g.drawImage(
-				image,
+					MenuImg.menuBackgroundScaled,
 				(int)x - GamePanel.WIDTH,
 				(int)y,
 				

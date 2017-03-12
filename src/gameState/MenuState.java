@@ -3,8 +3,6 @@ package gameState;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
-
 import tileMap.Background;
 import main.GamePanel;
 import main.Lang;
@@ -19,9 +17,6 @@ public class MenuState extends GameState {
 	String[] options;
 	
 	private Font font;
-
-	private Image logo;
-	private Image button;
 	
 	public MenuState(GameStateManager gsm) {
 		
@@ -29,9 +24,6 @@ public class MenuState extends GameState {
 		
 		Lang.init();
 		currentChoice = lastChoice;
-		
-		logo = new ImageIcon("Resources/UI/logo.png").getImage();
-		button = new ImageIcon("Resources/UI/button.png").getImage();
 		
 		options = new String[6];
 		options[0] = Lang.resume;
@@ -43,7 +35,7 @@ public class MenuState extends GameState {
 		
 		try {
 			
-			bg = new Background("/Backgrounds/bg.jpg", 1);
+			bg = new Background(1);
 			bg.setVector(-0.5, 0);
 			
 			font = new Font("Boulder", Font.PLAIN, 46);
@@ -67,7 +59,7 @@ public class MenuState extends GameState {
 		bg.draw(g);
 		
 		// draw title
-		g.drawImage(logo, GamePanel.WIDTH/2 - logo.getWidth(null)/2, 50, null);
+		g.drawImage(MenuImg.logo, GamePanel.WIDTH/2 - MenuImg.logo.getWidth(null)/2, 50, null);
 		
 		// draw menu options
 		
@@ -85,8 +77,8 @@ public class MenuState extends GameState {
 			else {
 				g.setColor(Color.BLACK);
 			}
-			g.drawImage(button, GamePanel.WIDTH/2 - button.getWidth(null)/2, 250 + i * 80, null);
-			g.drawString(options[i], (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + i * 80);
+			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + i * 80, null);
+			g.drawString(options[i], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + i * 80);
 		}
 		
 	}

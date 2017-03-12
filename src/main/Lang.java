@@ -5,8 +5,13 @@ public class Lang {
 	//Languages
 	public static int en = 0;
 	public static int pl = 1;
+	public static int ru = 2;
+	public static int nl = 3;
+	
 	public static String english;
 	public static String polish;
+	public static String russian;
+	public static String dutch;
 
 	//Menu strings
 	public static String resume;
@@ -34,20 +39,54 @@ public class Lang {
 			
 			english = "English";
 			polish = "Polish";
+			russian = "Russian";
+			dutch = "Dutch";
 			
 		}
 		if(currentLanguage == pl) {
-			resume = "Wzn�w gr�";
+			resume = "Wznów grę";
 			newGame = "Nowa gra";
-			loadGame = "Wczytaj gr�";
+			loadGame = "Wczytaj grę";
 			options = "Opcje";
 			credits = "Autorzy";
-			quit = "Wyjd�";
-			back = "Powr�t";
-			language = "J�zyk";
+			quit = "Wyjdź";
+			back = "Powrót";
+			language = "Język";
 			
 			english = "Angielski";
 			polish = "Polski";
+			russian = "Rosyjski";
+			dutch = "Holenderski";
+		}
+		if(currentLanguage == ru) {
+			resume = "Продолжить";
+			newGame = "Новая Игра";
+			loadGame = "Загрузить Игру";
+			options = "Опции";
+			credits = "Авторы";
+			quit = "Выйти";
+			back = "Назад";
+			language = "Язык";
+
+			english = "Английский";
+			polish = "Польский";
+			russian = "Русский";
+			dutch = "Голландский";
+		}
+		if(currentLanguage == nl) {
+			resume = "Doorgaan";
+			newGame = "Nieuw Spel";
+			loadGame = "Laad Spel";
+			options = "Instelling";
+			credits = "Auteurs";
+			quit = "Stoppen";
+			back = "Terug";
+			language = "Taal";
+			
+			english = "Engels";
+			polish = "Pools";
+			russian = "Russies";
+			dutch = "Nederlands";
 		}
 	}
 	
