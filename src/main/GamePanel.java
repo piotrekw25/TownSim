@@ -12,9 +12,12 @@ import gameState.GameStateManager;
 public class GamePanel extends JPanel
 	implements Runnable, KeyListener{
 	
-	// dimensions
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 800;
+	static // dimensions
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+	
+	public static final int WIDTH = (int) screenSize.getWidth();
+	public static final int HEIGHT = (int) screenSize.getHeight();
 	public static final int SCALE = 1;
 	
 	// game thread
@@ -88,6 +91,7 @@ public class GamePanel extends JPanel
 			catch(Exception e) {
 				e.printStackTrace();
 			}
+			
 			
 		}
 		

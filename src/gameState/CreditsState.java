@@ -9,12 +9,11 @@ import tileMap.Background;
 import main.GamePanel;
 import main.Lang;
 
-public class MenuState extends GameState {
+public class CreditsState extends GameState {
 	
 	private Background bg;
 	
-	private static int currentChoice = 0;
-	private static int lastChoice = 0;
+	private int currentChoice = 0;
 	
 	String[] options;
 	
@@ -22,24 +21,20 @@ public class MenuState extends GameState {
 
 	private Image logo;
 	private Image button;
+	private Image box;
 	
-	public MenuState(GameStateManager gsm) {
+	public CreditsState(GameStateManager gsm) {
 		
 		this.gsm = gsm;
 		
 		Lang.init();
-		currentChoice = lastChoice;
 		
 		logo = new ImageIcon("Resources/UI/logo.png").getImage();
 		button = new ImageIcon("Resources/UI/button.png").getImage();
+		box = new ImageIcon("Resources/UI/box.png").getImage();
 		
-		options = new String[6];
-		options[0] = Lang.resume;
-		options[1] = Lang.newGame;
-		options[2] = Lang.loadGame;
-		options[3] = Lang.options;
-		options[4] = Lang.credits;
-		options[5] = Lang.quit;
+		options = new String[1];
+		options[0] = Lang.back;
 		
 		try {
 			
@@ -76,8 +71,17 @@ public class MenuState extends GameState {
 		        RenderingHints.KEY_TEXT_ANTIALIASING,
 		        RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 		
-		
+		//Credits title
 		g.setFont(font);
+		g.setColor(Color.BLACK);
+		g.drawImage(button, GamePanel.WIDTH/2 - button.getWidth(null)/2, 250, null);
+		g.drawString(Lang.credits, (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298);
+		
+		//Box
+		g.drawImage(box, GamePanel.WIDTH/2 - box.getWidth(null)/2, 250 + 80, null);
+		g.drawString("Piotr Weber", (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + 120);
+		g.drawString("Adam Gawliñski", (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + 2* 90);
+		
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
 				g.setColor(Color.ORANGE);
@@ -85,35 +89,15 @@ public class MenuState extends GameState {
 			else {
 				g.setColor(Color.BLACK);
 			}
-			g.drawImage(button, GamePanel.WIDTH/2 - button.getWidth(null)/2, 250 + i * 80, null);
-			g.drawString(options[i], (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + i * 80);
+			g.drawImage(button, GamePanel.WIDTH/2 - button.getWidth(null)/2, 250 + 350, null);
+			g.drawString(options[0], (GamePanel.WIDTH/2 -button.getWidth(null)/2) + 30, 298 + 350);
 		}
 		
 	}
 	
 	private void select() {
 		if(currentChoice == 0) {
-			lastChoice = currentChoice;
-			gsm.setState(GameStateManager.LEVELSTATE);
-		}
-		if(currentChoice == 1) {
-			lastChoice = currentChoice;
-			gsm.setState(GameStateManager.LEVELSTATE);
-		}
-		if(currentChoice == 2) {
-			lastChoice = currentChoice;
-			gsm.setState(GameStateManager.LEVELSTATE);
-		}
-		if(currentChoice == 3) {
-			lastChoice = currentChoice;
-			gsm.setState(GameStateManager.OPTIONSSTATE);
-		}
-		if(currentChoice == 4) {
-			lastChoice = currentChoice;
-			gsm.setState(GameStateManager.CREDITSSTATE);
-		}
-		if(currentChoice == 5) {
-			System.exit(0);
+			gsm.setState(GameStateManager.MENUSTATE);
 		}
 	}
 	

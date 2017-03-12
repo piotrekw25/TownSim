@@ -1,7 +1,5 @@
 package gameState;
 
-import java.util.ArrayList;
-
 public class GameStateManager {
 	
 	private GameState[] gameStates;
@@ -25,6 +23,10 @@ public class GameStateManager {
 	private void loadState(int state) {
 		if(state == MENUSTATE)
 			gameStates[state] = new MenuState(this);
+		if(state == CREDITSSTATE)
+			gameStates[state] = new CreditsState(this);
+		if(state == OPTIONSSTATE)
+			gameStates[state] = new OptionsState(this);
 	}
 	
 	private void unloadState(int state) {
