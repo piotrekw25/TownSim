@@ -8,12 +8,14 @@ public class Lang {
 	public static int ru = 2;
 	public static int nl = 3;
 	
-	public static String english;
-	public static String polish;
-	public static String russian;
-	public static String dutch;
+	public static int Languages = 4;
+	
+	public static String english = "English";
+	public static String polish = "Polski";
+	public static String russian ="Русский";
+	public static String dutch = "Nederlands";
 
-	//Menu strings
+	//Menu stringss
 	public static String resume;
 	public static String newGame;
 	public static String loadGame;
@@ -37,10 +39,10 @@ public class Lang {
 			back = "Back";
 			language = "Language";
 			
-			english = "English";
-			polish = "Polish";
-			russian = "Russian";
-			dutch = "Dutch";
+			//english = "English";
+			//polish = "Polish";
+			//russian = "Russian";
+			//dutch = "Dutch";
 			
 		}
 		if(currentLanguage == pl) {
@@ -53,10 +55,10 @@ public class Lang {
 			back = "Powrót";
 			language = "Język";
 			
-			english = "Angielski";
-			polish = "Polski";
-			russian = "Rosyjski";
-			dutch = "Holenderski";
+			//english = "Angielski";
+			//polish = "Polski";
+			//russian = "Rosyjski";
+			//dutch = "Holenderski";
 		}
 		if(currentLanguage == ru) {
 			resume = "Продолжить";
@@ -68,10 +70,10 @@ public class Lang {
 			back = "Назад";
 			language = "Язык";
 
-			english = "Английский";
-			polish = "Польский";
-			russian = "Русский";
-			dutch = "Голландский";
+			//english = "Английский";
+			//polish = "Польский";
+			//russian = "Русский";
+			//dutch = "Голландский";
 		}
 		if(currentLanguage == nl) {
 			resume = "Doorgaan";
@@ -83,11 +85,28 @@ public class Lang {
 			back = "Terug";
 			language = "Taal";
 			
-			english = "Engels";
-			polish = "Pools";
-			russian = "Russies";
-			dutch = "Nederlands";
+			//english = "Engels";
+			//polish = "Pools";
+			//russian = "Russies";
+			//dutch = "Nederlands";
 		}
+	}
+	
+	public static String currentLanguage(int a) {
+		String currentLanguageString = null;
+		if(a == en) {
+			currentLanguageString = Lang.english;
+		}
+		if(a == pl) {
+			currentLanguageString = Lang.polish;
+		}
+		if(a == ru) {
+			currentLanguageString = Lang.russian;
+		}
+		if(a == nl) {
+			currentLanguageString = Lang.dutch;
+		}
+		return currentLanguageString;
 	}
 	
 	public static void changeLanguage(int language) {

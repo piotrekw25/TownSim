@@ -43,19 +43,19 @@ public class Background {
 		
 		xLast = x;
 		yLast = y;
-		System.out.println(xLast + " " + yLast);
 	}
 	
 	public void draw(Graphics2D g) {
 		
 		g.drawImage(MenuImg.menuBackgroundScaled, (int)x, (int)y, null);
 		
+		if(x == - GamePanel.WIDTH || x == GamePanel.WIDTH)
+			x = 0;
 		if(x < 0) {
 			g.drawImage(
 					MenuImg.menuBackgroundScaled,
 				(int)x + GamePanel.WIDTH,
 				(int)y,
-				GamePanel.WIDTH, GamePanel.HEIGHT,
 				null
 			);
 		}
@@ -64,7 +64,6 @@ public class Background {
 					MenuImg.menuBackgroundScaled,
 				(int)x - GamePanel.WIDTH,
 				(int)y,
-				
 				null
 			);
 		}

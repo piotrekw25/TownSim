@@ -12,6 +12,8 @@ public class OptionsState extends GameState {
 	private Background bg;
 	
 	private int currentChoice = 0;
+	private int currentChoiceButton = 0; //horizontal choice
+	
 	
 	String[] options;
 	
@@ -70,9 +72,8 @@ public class OptionsState extends GameState {
 		
 		//Box
 		g.drawImage(MenuImg.box, GamePanel.WIDTH/2 - MenuImg.box.getWidth(null)/2, 250 + 80, null);
-		g.drawString("Piotr Weber", (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 120);
-		g.drawString("Adam Gawliñski", (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 2* 90);
 		
+		//Buttons
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
 				g.setColor(Color.ORANGE);
@@ -80,15 +81,18 @@ public class OptionsState extends GameState {
 			else {
 				g.setColor(Color.BLACK);
 			}
-			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350 + i * 80, null);
-			g.drawString(options[i], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350 + i * 80);
+			g.drawImage(MenuImg.button2, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350 + i * 80, null);
+			g.drawString(options[0] + ": " + Lang.currentLanguage(currentChoiceButton), (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350 + 0 * 80);
+			
+			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350 + 1 * 80, null);
+			g.drawString(options[1], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350 + 1 * 80);
 		}
 		
 	}
 	
 	private void select() {
 		if(currentChoice == 0) {
-			Lang.changeLanguage(Lang.pl);
+			Lang.changeLanguage(currentChoiceButton);
 			options[0] = Lang.language;
 			options[1] = Lang.back;
 		}
@@ -111,6 +115,18 @@ public class OptionsState extends GameState {
 			currentChoice++;
 			if(currentChoice == options.length) {
 				currentChoice = 0;
+			}
+		}
+		if(k == KeyEvent.VK_LEFT) {
+			currentChoiceButton--;
+			if(currentChoiceButton == -1) {
+				currentChoiceButton = Lang.Languages -1;
+			}
+		}
+		if(k == KeyEvent.VK_RIGHT) {
+			currentChoiceButton++;
+			if(currentChoiceButton == Lang.Languages) {
+				currentChoiceButton = 0;
 			}
 		}
 	}

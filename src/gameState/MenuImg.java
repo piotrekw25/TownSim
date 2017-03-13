@@ -14,6 +14,7 @@ public class MenuImg {
 	
 	public static Image logo;
 	public static Image button;
+	public static Image button2;
 	public static Image box;
 	
 	public static BufferedImage menuBackground;
@@ -22,6 +23,7 @@ public class MenuImg {
 	public static void LoadMenuImgs() {
 		logo = new ImageIcon("Resources/UI/logo.png").getImage();
 		button = new ImageIcon("Resources/UI/button.png").getImage();
+		button2 = new ImageIcon("Resources/UI/button2.png").getImage();
 		box = new ImageIcon("Resources/UI/box.png").getImage();
 		
 		try {
