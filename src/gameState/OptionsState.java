@@ -23,10 +23,8 @@ public class OptionsState extends GameState {
 		
 		this.gsm = gsm;
 		
-		Lang.init();
-		
 		options = new String[2];
-		options[0] = Lang.language;
+		options[0] = Lang.currentLanguage(currentChoiceButton);
 		options[1] = Lang.back;
 		
 		try {
@@ -73,22 +71,32 @@ public class OptionsState extends GameState {
 		//Box
 		g.drawImage(MenuImg.box, GamePanel.WIDTH/2 - MenuImg.box.getWidth(null)/2, 250 + 80, null);
 		
+		//Language text
+		g.drawString(Lang.language + ":", GamePanel.WIDTH/2 - MenuImg.box.getWidth(null)/2 + 40, 250 + 140);
+		
 		//Buttons
-		for(int i = 0; i < options.length; i++) {
-			if(i == currentChoice) {
+			if(0 == currentChoice) {
+				g.setColor(Color.ORANGE);
+			}
+			else {
+			g.setColor(Color.BLACK);
+			}
+			g.drawImage(MenuImg.button2, GamePanel.WIDTH/2 - MenuImg.button2.getWidth(null)/2, 250 + 160, null);
+			
+			int width = g.getFontMetrics().stringWidth(Lang.currentLanguage(currentChoiceButton)); // string length in pixels
+			g.drawString(Lang.currentLanguage(currentChoiceButton), GamePanel.WIDTH/2 - (width / 2), 250 + 208);
+			
+			//Back
+			if(1 == currentChoice) {
 				g.setColor(Color.ORANGE);
 			}
 			else {
 				g.setColor(Color.BLACK);
 			}
-			g.drawImage(MenuImg.button2, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350 + i * 80, null);
-			g.drawString(options[0] + ": " + Lang.currentLanguage(currentChoiceButton), (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350 + 0 * 80);
-			
 			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350 + 1 * 80, null);
 			g.drawString(options[1], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350 + 1 * 80);
+	
 		}
-		
-	}
 	
 	private void select() {
 		if(currentChoice == 0) {

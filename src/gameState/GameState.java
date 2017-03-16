@@ -12,4 +12,13 @@ public abstract class GameState {
 	public abstract void keyPressed(int k);
 	public abstract void keyReleased(int k);
 	
+	public void entered() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void release(int button) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

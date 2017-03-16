@@ -21,8 +21,6 @@ public class CreditsState extends GameState {
 		
 		this.gsm = gsm;
 		
-		Lang.init();
-		
 		options = new String[1];
 		options[0] = Lang.back;
 		
@@ -79,10 +77,9 @@ public class CreditsState extends GameState {
 			else {
 				g.setColor(Color.BLACK);
 			}
-			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350, null);
-			g.drawString(options[0], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350);
-		}
-		
+			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + 350 + 1 * 80, null);
+			g.drawString(options[0], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + 350 + 1 * 80);
+		}		
 	}
 	
 	private void select() {

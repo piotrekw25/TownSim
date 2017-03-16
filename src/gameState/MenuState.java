@@ -14,24 +14,28 @@ public class MenuState extends GameState {
 	private static int currentChoice = 0;
 	private static int lastChoice = 0;
 	
+	private static int numOfChoices = 6;
+	
 	String[] options;
 	
 	private Font font;
+
+	public Rectangle[] button;
 	
 	public MenuState(GameStateManager gsm) {
 		
-		this.gsm = gsm;
-		
-		Lang.init();
+		this.gsm = gsm;		
 		currentChoice = lastChoice;
 		
-		options = new String[6];
+		options = new String[numOfChoices];
 		options[0] = Lang.resume;
 		options[1] = Lang.newGame;
 		options[2] = Lang.loadGame;
 		options[3] = Lang.options;
 		options[4] = Lang.credits;
 		options[5] = Lang.quit;
+		
+		button = new Rectangle[numOfChoices];
 		
 		try {
 			
@@ -77,8 +81,13 @@ public class MenuState extends GameState {
 			else {
 				g.setColor(Color.BLACK);
 			}
+			
 			g.drawImage(MenuImg.button, GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + i * 80, null);
 			g.drawString(options[i], (GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2) + 30, 298 + i * 80);
+			
+			button[i] = new Rectangle(GamePanel.WIDTH/2 - MenuImg.button.getWidth(null)/2, 250 + i * 80, MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
+			
+			
 		}
 		
 	}
@@ -126,6 +135,30 @@ public class MenuState extends GameState {
 			}
 		}
 	}
-	public void keyReleased(int k) {}
+	public void keyReleased(int k) {
+		
+	}
 	
+public void release(int mouseButton) {
+	if (mouseButton == 1) {
+		for (int i = 0; i < button.length; i++) {
+			if (button[i].contains(GamePanel.mse)) {
+				System.out.println("click!" + i);
+				currentChoice = i;
+				select();
+				}
+			}
+		}
+	}
+
+public void entered() {
+		for (int i = 0; i < button.length; i++) {
+			if (button[i].contains(GamePanel.mse)) {
+				System.out.println("entered " + i);
+				currentChoice = i;
+				
+			}
+		}
+	}
 }
+		

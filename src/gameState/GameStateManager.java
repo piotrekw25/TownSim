@@ -2,27 +2,28 @@ package gameState;
 
 public class GameStateManager {
 	
-	private GameState[] gameStates;
-	private int currentState;
+	public static GameState[] gameStates;
+	public static int currentState;
 	
-	public static final int NUMGAMESTATES = 4;
-	public static final int MENUSTATE = 0;
-	public static final int OPTIONSSTATE = 1;
-	public static final int CREDITSSTATE = 2;
-	public static final int LEVELSTATE = 3;
+	public static final int NUMGAMESTATES = 5;
+	public static final int LOADINGSTATE = 0;
+	public static final int MENUSTATE = 1;
+	public static final int OPTIONSSTATE = 2;
+	public static final int CREDITSSTATE = 3;
+	public static final int LEVELSTATE = 4;
 	
 	public GameStateManager() {
 		
 		gameStates = new GameState[NUMGAMESTATES];
 		
-		MenuImg.LoadMenuImgs();
-		
-		currentState = MENUSTATE;
+		currentState = LOADINGSTATE;
 		loadState(currentState);
 		
 	}
 	
 	private void loadState(int state) {
+		if(state == LOADINGSTATE)
+			gameStates[state] = new LoadingState(this);
 		if(state == MENUSTATE)
 			gameStates[state] = new MenuState(this);
 		if(state == CREDITSSTATE)

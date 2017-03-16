@@ -33,10 +33,18 @@ public class GamePanel extends JPanel
 	// game state manager
 	private GameStateManager gsm;
 	
+	public static Point mse = new Point(0, 0);
+	
 	public GamePanel() {
 		super();
 		setFocusable(true);
 		requestFocus();
+		
+		
+		//Mouse
+		addMouseListener(new Mouse());
+		addMouseMotionListener(new Mouse());
+		
 	}
 	
 	public void addNotify() {
@@ -44,6 +52,8 @@ public class GamePanel extends JPanel
 		if(thread == null) {
 			thread = new Thread(this);
 			addKeyListener(this);
+			
+			
 			thread.start();
 		}
 	}

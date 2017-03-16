@@ -24,9 +24,10 @@ public class Lang {
 	public static String quit;
 	public static String back;
 	public static String language;
-
+	public static String loading;
 	
 	public static int currentLanguage = en;
+
 	
 	public static void init() {
 		if(currentLanguage == en) {
@@ -38,6 +39,7 @@ public class Lang {
 			quit = "Quit";
 			back = "Back";
 			language = "Language";
+			loading = "Loading...";
 			
 			//english = "English";
 			//polish = "Polish";
@@ -54,6 +56,7 @@ public class Lang {
 			quit = "Wyjdź";
 			back = "Powrót";
 			language = "Język";
+			loading = "Wczytywanie...";
 			
 			//english = "Angielski";
 			//polish = "Polski";
@@ -69,6 +72,7 @@ public class Lang {
 			quit = "Выйти";
 			back = "Назад";
 			language = "Язык";
+			loading = "Загрузка...";
 
 			//english = "Английский";
 			//polish = "Польский";
@@ -84,6 +88,7 @@ public class Lang {
 			quit = "Stoppen";
 			back = "Terug";
 			language = "Taal";
+			loading = "Laden...";
 			
 			//english = "Engels";
 			//polish = "Pools";
