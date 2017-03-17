@@ -9,7 +9,6 @@ public class Mouse implements MouseMotionListener, MouseListener {
 
 	public void mouseClicked(MouseEvent e) {
 
-		
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -35,10 +34,8 @@ public class Mouse implements MouseMotionListener, MouseListener {
 	public void mouseMoved(MouseEvent e) {
 		GamePanel.mse = new Point((e.getX()) - ((GamePanel.WIDTH - GamePanel.WIDTH) / 2),
 				(e.getY()) - ((GamePanel.HEIGHT - (GamePanel.HEIGHT)) - (GamePanel.WIDTH - GamePanel.WIDTH) / 2));
-		
+
 		GameStateManager.gameStates[GameStateManager.currentState].entered();
-		
-		//System.out.println("X:" + e.getX() + " Y" + e.getY());
 	}
 
 }
