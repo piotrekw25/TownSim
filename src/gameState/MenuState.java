@@ -94,7 +94,7 @@ public class MenuState extends GameState {
 		}
 		if (currentChoice == 1) {
 			lastChoice = currentChoice;
-			gsm.setState(GameStateManager.LEVELSTATE);
+			gsm.setState(GameStateManager.PLAYSTATE);
 		}
 		if (currentChoice == 2) {
 			lastChoice = currentChoice;

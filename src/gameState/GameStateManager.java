@@ -5,12 +5,13 @@ public class GameStateManager {
 	public static GameState[] gameStates;
 	public static int currentState;
 
-	public static final int NUMGAMESTATES = 5;
+	public static final int NUMGAMESTATES = 6;
 	public static final int LOADINGSTATE = 0;
 	public static final int MENUSTATE = 1;
 	public static final int OPTIONSSTATE = 2;
 	public static final int CREDITSSTATE = 3;
 	public static final int LEVELSTATE = 4;
+	public static final int PLAYSTATE = 5;
 
 	public GameStateManager() {
 
@@ -26,6 +27,8 @@ public class GameStateManager {
 			gameStates[state] = new LoadingState(this);
 		if (state == MENUSTATE)
 			gameStates[state] = new MenuState(this);
+		if (state == PLAYSTATE)
+			gameStates[state] = new PlayState(this);
 		if (state == CREDITSSTATE)
 			gameStates[state] = new CreditsState(this);
 		if (state == OPTIONSSTATE)
