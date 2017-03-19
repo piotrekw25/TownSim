@@ -11,11 +11,11 @@ public class OptionsState extends GameState {
 
 	private Background bg;
 
-	private int currentChoice = 0;
-	private int currentChoiceButton = 0; // horizontal choice
+	private static int currentChoice = 0;
+	private static int currentChoiceButton = 0; // horizontal choice
 
 	private static int numOfChoices = 2;
-	public Rectangle[] button;
+	public Rectangle[][] button;
 	String[] options;
 
 	private Font font;
@@ -25,10 +25,19 @@ public class OptionsState extends GameState {
 		this.gsm = gsm;
 
 		options = new String[numOfChoices];
-		options[0] = Lang.currentLanguage(currentChoiceButton);
+		options[0] = Lang.getCurrentLanguage(Lang.currentLanguage);
 		options[1] = Lang.back;
 
-		button = new Rectangle[numOfChoices];
+		button = new Rectangle[numOfChoices][3];
+		
+		//Language button
+		button[0][0] = new Rectangle((GamePanel.WIDTH / 2 - MenuImg.button2.getWidth(null) / 2) + 64, 250 + 160, 256, MenuImg.button.getHeight(null)); //button
+		button[0][1] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button2.getWidth(null) / 2, 250 + 160, 64, MenuImg.button.getHeight(null)); //left arrow
+		button[0][2] = new Rectangle((GamePanel.WIDTH / 2) + (MenuImg.button2.getWidth(null)/2) - 64, 250 + 160, 64, MenuImg.button.getHeight(null)); //right arrow
+
+		//Back button
+		button[1][0] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + 350 + 1 * 80, MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
+		
 
 		try {
 
@@ -58,8 +67,6 @@ public class OptionsState extends GameState {
 		// draw title
 		g.drawImage(MenuImg.logo, GamePanel.WIDTH / 2 - MenuImg.logo.getWidth(null) / 2, 50, null);
 
-		// draw menu options
-
 		// Text antialiasing
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 
@@ -75,6 +82,9 @@ public class OptionsState extends GameState {
 		// Language text
 		g.drawString(Lang.language + ":", GamePanel.WIDTH / 2 - MenuImg.box.getWidth(null) / 2 + 40, 250 + 140);
 
+		
+		// draw menu options		
+		g.fillRect(GamePanel.WIDTH / 2 - MenuImg.button2.getWidth(null) / 2 + 64, 250 + 160, 256, MenuImg.button.getHeight(null));
 		// Buttons
 		if (0 == currentChoice) {
 			g.setColor(Color.ORANGE);
@@ -83,13 +93,9 @@ public class OptionsState extends GameState {
 		}
 		g.drawImage(MenuImg.button2, GamePanel.WIDTH / 2 - MenuImg.button2.getWidth(null) / 2, 250 + 160, null);
 
-		options[0] = Lang.currentLanguage(currentChoiceButton);
-		int width = g.getFontMetrics().stringWidth(Lang.currentLanguage(currentChoiceButton)); // string
-																								// length
-																								// in
-																								// pixels
+		options[0] = Lang.getCurrentLanguage(currentChoiceButton);
+		int width = g.getFontMetrics().stringWidth(Lang.getCurrentLanguage(currentChoiceButton)); // string length in pixels
 		g.drawString(options[0], GamePanel.WIDTH / 2 - (width / 2), 250 + 208);
-		button[0] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + 160);
 
 		// Back
 		if (1 == currentChoice) {
@@ -99,7 +105,6 @@ public class OptionsState extends GameState {
 		}
 		g.drawImage(MenuImg.button, GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + 350 + 1 * 80, null);
 		g.drawString(options[1], (GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2) + 30, 298 + 350 + 1 * 80);
-		button[1] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + 350 + 1 * 80);
 	}
 
 	private void select() {
@@ -113,6 +118,9 @@ public class OptionsState extends GameState {
 		}
 	}
 
+	public void keyReleased(int k) {
+	}
+	
 	public void keyPressed(int k) {
 		if (k == KeyEvent.VK_ENTER) {
 			select();
@@ -134,34 +142,49 @@ public class OptionsState extends GameState {
 			if (currentChoiceButton == -1) {
 				currentChoiceButton = Lang.Languages - 1;
 			}
+			select();
 		}
 		if (k == KeyEvent.VK_RIGHT) {
 			currentChoiceButton++;
 			if (currentChoiceButton == Lang.Languages) {
 				currentChoiceButton = 0;
 			}
+			select();
 		}
-	}
-
-	public void keyReleased(int k) {
 	}
 
 	public void release(int mouseButton) {
 		if (mouseButton == 1) {
 			for (int i = 0; i < button.length; i++) {
-				if (button[i].contains(GamePanel.mse)) {
+				if (button[i][0].contains(GamePanel.mse)) {
 					currentChoice = i;
 					select();
 				}
+			}
+			if (button[0][1].contains(GamePanel.mse)) {
+				currentChoiceButton--;
+				if (currentChoiceButton == -1)
+					currentChoiceButton = Lang.Languages - 1;
+				select();
+			}
+			if (button[0][2].contains(GamePanel.mse)) {
+				currentChoiceButton++;
+				if (currentChoiceButton == Lang.Languages)
+					currentChoiceButton = 0;				
+				select();
 			}
 		}
 	}
 
 	public void entered() {
 		for (int i = 0; i < button.length; i++) {
-			if (button[i].contains(GamePanel.mse)) {
+			if (button[i][0].contains(GamePanel.mse)) {
 				currentChoice = i;
 			}
 		}
+		if (button[0][1].contains(GamePanel.mse))
+			currentChoice = 0;
+		if (button[0][2].contains(GamePanel.mse))
+			currentChoice = 0;
 	}
 }

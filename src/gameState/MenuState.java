@@ -34,6 +34,11 @@ public class MenuState extends GameState {
 		options[5] = Lang.quit;
 
 		button = new Rectangle[numOfChoices];
+		
+		for (int i = 0; i < options.length; i++) {
+			button[i] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + i * 80,
+					MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
+		}
 
 		try {
 
@@ -78,10 +83,6 @@ public class MenuState extends GameState {
 
 			g.drawImage(MenuImg.button, GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + i * 80, null);
 			g.drawString(options[i], (GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2) + 30, 298 + i * 80);
-
-			button[i] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + i * 80,
-					MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
-
 		}
 
 	}

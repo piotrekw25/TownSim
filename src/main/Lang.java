@@ -96,7 +96,7 @@ public class Lang {
 		}
 	}
 
-	public static String currentLanguage(int a) {
+	public static String getCurrentLanguage(int a) {
 		String currentLanguageString = null;
 		if (a == en) {
 			currentLanguageString = Lang.english;

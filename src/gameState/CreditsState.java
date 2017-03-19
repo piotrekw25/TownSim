@@ -28,6 +28,11 @@ public class CreditsState extends GameState {
 		options[0] = Lang.back;
 
 		button = new Rectangle[numOfChoices];
+		
+		for (int i = 0; i < options.length; i++) {
+			button[i] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 680 + i * 80,
+					MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
+		}
 
 		try {
 
@@ -57,8 +62,6 @@ public class CreditsState extends GameState {
 		// draw title
 		g.drawImage(MenuImg.logo, GamePanel.WIDTH / 2 - MenuImg.logo.getWidth(null) / 2, 50, null);
 
-		// draw menu options
-
 		// Text antialiasing
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 
@@ -73,6 +76,8 @@ public class CreditsState extends GameState {
 		g.drawString("Piotr Weber", (GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2) + 30, 298 + 120);
 		g.drawString("Adam Gawliñski", (GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2) + 30, 298 + 2 * 90);
 
+		// draw menu options
+		
 		for (int i = 0; i < options.length; i++) {
 			if (i == currentChoice) {
 				g.setColor(Color.ORANGE);
@@ -81,8 +86,6 @@ public class CreditsState extends GameState {
 			}
 			g.drawImage(MenuImg.button, GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 680 + i * 80, null);
 			g.drawString(options[0], (GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2) + 30, 728 + i * 80);
-			button[i] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 680 + i * 80,
-					MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
 		}
 	}
 
