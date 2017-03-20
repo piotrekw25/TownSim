@@ -37,7 +37,7 @@ Naszym projektem jest stworzenie gry symulacyjnej polegającej na budowaniu mias
 ####Użyte biblioteki
 - jl1.0.1.jar
 - mp3spi1.9.5.jar
--tritonus_share.jar
+- tritonus_share.jar
 
 ####Wersja Java
 Java 8u121
