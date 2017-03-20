@@ -1,10 +1,10 @@
 # TownSim
 Symulator budowy miasta
 
-####O projekcie
+#### O projekcie
 Naszym projektem jest stworzenie gry symulacyjnej polegającej na budowaniu miasta w widoku 2d z góry
 
-####Planowane funkcje gry
+#### Planowane funkcje gry
 - Symulacja życia obywateli miasta 
   * płeć, wiek, edukacja, zawód, miejsce zamieszkania, miejsce pracy, rodzina, zadowolenie z życia w mieście
 - Budowa dróg dwupasmowych i czteropasmowych i jednokierunkowych
@@ -24,20 +24,21 @@ Naszym projektem jest stworzenie gry symulacyjnej polegającej na budowaniu mias
 
 
 
-####Harmonogram pracy:
+#### Harmonogram pracy:
 - Tydzień 1:
  Opis projektu
 - Tydzień 2:
  Stworzenie menu gry
 - Tydzień 3:
+Dodanie dźwięków, stworzenie podstawy do wyświetlania ekranu gry, poprawki menu
 - Tydzień 4:
 - Tydzień 5:
 - Tydzień 6:
 
-####Użyte biblioteki
+#### Użyte biblioteki
 - jl1.0.1.jar
 - mp3spi1.9.5.jar
 - tritonus_share.jar
 
-####Wersja Java
+#### Wersja Java
 Java 8u121
