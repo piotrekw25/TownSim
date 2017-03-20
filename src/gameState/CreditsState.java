@@ -28,7 +28,7 @@ public class CreditsState extends GameState {
 		options[0] = Lang.back;
 
 		button = new Rectangle[numOfChoices];
-		
+
 		for (int i = 0; i < options.length; i++) {
 			button[i] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 680 + i * 80,
 					MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
@@ -77,7 +77,7 @@ public class CreditsState extends GameState {
 		g.drawString("Adam Gawliñski", (GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2) + 30, 298 + 2 * 90);
 
 		// draw menu options
-		
+
 		for (int i = 0; i < options.length; i++) {
 			if (i == currentChoice) {
 				g.setColor(Color.ORANGE);

@@ -3,6 +3,7 @@ package gameState;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+import audio.AudioPlayer;
 import tileMap.Background;
 import main.GamePanel;
 import main.Lang;
@@ -19,6 +20,10 @@ public class MenuState extends GameState {
 	String[] options;
 
 	private Font font;
+	
+	public AudioPlayer bgMusic;
+
+	public static boolean musicAlreadyPlaying = false;
 
 	public MenuState(GameStateManager gsm) {
 
@@ -34,7 +39,7 @@ public class MenuState extends GameState {
 		options[5] = Lang.quit;
 
 		button = new Rectangle[numOfChoices];
-		
+
 		for (int i = 0; i < options.length; i++) {
 			button[i] = new Rectangle(GamePanel.WIDTH / 2 - MenuImg.button.getWidth(null) / 2, 250 + i * 80,
 					MenuImg.button.getWidth(null), MenuImg.button.getHeight(null));
@@ -49,6 +54,12 @@ public class MenuState extends GameState {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		if(!musicAlreadyPlaying) {
+			bgMusic = new AudioPlayer("/music/no-more-no-less_GJCvJUr_.mp3");
+			bgMusic.playLoop();
+			musicAlreadyPlaying = true;
 		}
 
 	}
