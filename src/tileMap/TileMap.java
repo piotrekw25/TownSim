@@ -43,8 +43,8 @@ public class TileMap {
 
 	public TileMap(int tileSize) {
 		this.tileSize = tileSize;
-		numRowsToDraw = GamePanel.HEIGHT / tileSize; //na dole sie nie renderuje bo jest HUD
-		numColsToDraw = GamePanel.WIDTH / tileSize + 1;
+		numRowsToDraw = GamePanel.HEIGHT / tileSize + 2;
+		numColsToDraw = GamePanel.WIDTH / tileSize + 2;
 		tween = 0.07;
 	}
 

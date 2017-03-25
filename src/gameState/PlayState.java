@@ -16,15 +16,18 @@ public class PlayState extends GameState {
 	private Background bg;
 
 	private Camera camera;
+	
+	private Road road;
 
 	//private ArrayList<Enemy> enemies;
 	//private ArrayList<Explosion> explosions;
 
-	//private HUD hud;
+	private HUD hud;
 
 	//private AudioPlayer bgMusic;
 
 	private int tileSize = 64;
+	
 
 	public PlayState(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -34,7 +37,7 @@ public class PlayState extends GameState {
 	public void init() {
 
 		tileMap = new TileMap(tileSize);
-		tileMap.loadTiles("/tilesets/tileset.gif");
+		tileMap.loadTiles("/tilesets/tileset" + tileSize + ".png");
 		tileMap.loadMap("/maps/map1.map");
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(1);
@@ -48,7 +51,8 @@ public class PlayState extends GameState {
 
 		//explosions = new ArrayList<Explosion>();
 
-		//hud = new HUD(camera);
+		hud = new HUD(camera);
+		road = new Road(tileMap, 100, 100, 100, 100);
 
 		//bgMusic = new AudioPlayer("/Music/level1-1.mp3");
 		// bgMusic.play();
@@ -102,10 +106,13 @@ public class PlayState extends GameState {
 
 		// draw tilemap
 		tileMap.draw(g);
-
-		// draw player
-		camera.draw(g);
-
+		
+		hud.draw(g);
+		
+		road.draw(g);
+		//draw hud
+		
+		
 		// draw enemies
 //		for (int i = 0; i < enemies.size(); i++) {
 //			enemies.get(i).draw(g);
@@ -116,32 +123,37 @@ public class PlayState extends GameState {
 //			explosions.get(i).setMapPosition((int) tileMap.getx(), (int) tileMap.gety());
 //			explosions.get(i).draw(g);
 //		}
-//
-//		// draw hud
-//		hud.draw(g);
-
 	}
 
 	public void keyPressed(int k) {
-		if (k == KeyEvent.VK_LEFT)
+		if (k == KeyEvent.VK_A)
 			camera.setLeft(true);
-		if (k == KeyEvent.VK_RIGHT)
+		if (k == KeyEvent.VK_D)
 			camera.setRight(true);
-		if (k == KeyEvent.VK_UP)
+		if (k == KeyEvent.VK_W)
 			camera.setUp(true);
-		if (k == KeyEvent.VK_DOWN)
+		if (k == KeyEvent.VK_S)
 			camera.setDown(true);
+		
+		if (k == KeyEvent.VK_1)
+			hud.setPanel(hud.roadsPanel);
+		if (k == KeyEvent.VK_2)
+			hud.setPanel(hud.zonesPanel);
+		if (k == KeyEvent.VK_3)
+			hud.setPanel(hud.electricityPanel);
+		if (k == KeyEvent.VK_4)
+			hud.setPanel(hud.waterPanel);
+		
 	}
 
 	public void keyReleased(int k) {
-		if (k == KeyEvent.VK_LEFT)
+		if (k == KeyEvent.VK_A)
 			camera.setLeft(false);
-		if (k == KeyEvent.VK_RIGHT)
+		if (k == KeyEvent.VK_D)
 			camera.setRight(false);
-		if (k == KeyEvent.VK_UP)
+		if (k == KeyEvent.VK_W)
 			camera.setUp(false);
-		if (k == KeyEvent.VK_DOWN)
+		if (k == KeyEvent.VK_S)
 			camera.setDown(false);
 	}
-
 }
