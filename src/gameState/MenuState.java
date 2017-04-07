@@ -22,6 +22,8 @@ public class MenuState extends GameState {
 	private Font font;
 	
 	public AudioPlayer bgMusic;
+	
+	public static AudioPlayer click1;
 
 	public static boolean musicAlreadyPlaying = false;
 
@@ -56,11 +58,14 @@ public class MenuState extends GameState {
 			e.printStackTrace();
 		}
 		
-//		if(!musicAlreadyPlaying) {
-//			bgMusic = new AudioPlayer("/music/no-more-no-less_GJCvJUr_.mp3");
-//			bgMusic.playLoop();
-//			musicAlreadyPlaying = true;
-//		}
+		if(!musicAlreadyPlaying) {
+			bgMusic = new AudioPlayer("/music/no-more-no-less_GJCvJUr_.mp3");
+			bgMusic.playLoop();
+			musicAlreadyPlaying = true;
+		}
+		
+		click1 = new AudioPlayer("/sound/click1.mp3");
+		
 
 	}
 
@@ -140,6 +145,7 @@ public class MenuState extends GameState {
 				currentChoice = 0;
 			}
 		}
+		click1.play();
 	}
 
 	public void keyReleased(int k) {

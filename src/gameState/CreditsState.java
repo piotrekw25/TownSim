@@ -111,6 +111,7 @@ public class CreditsState extends GameState {
 				currentChoice = 0;
 			}
 		}
+		MenuState.click1.play();
 	}
 
 	public void keyReleased(int k) {

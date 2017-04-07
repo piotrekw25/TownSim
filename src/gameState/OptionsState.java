@@ -180,6 +180,7 @@ public class OptionsState extends GameState {
 				select();
 			}
 		}
+		MenuState.click1.play();
 	}
 
 	public void entered() {

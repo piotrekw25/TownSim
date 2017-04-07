@@ -2,11 +2,10 @@ package entity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.imageio.ImageIO;
 
+import gameState.PlayState;
+import gameState.Values;
 import main.GamePanel;
 
 public class HUD {
@@ -46,7 +45,7 @@ public class HUD {
 	public int budgetPanel = 11;
 	public int policiesPanel = 13;
 	
-	private int currentPanel = roadsPanel;
+	private int currentPanel = 99;
 	
 	private BufferedImage iconRoads;
 	private BufferedImage iconZones;
@@ -104,17 +103,33 @@ public class HUD {
 	}
 
 	public void draw(Graphics2D g) {
-
-		g.drawImage(image, hudX, hudY, null);
+		
 		g.setFont(font);
+		
+		g.setColor(Color.RED);
+		if (Values.waterUsed > Values.water) {
+			g.drawString("Not enough water!", 32, 1 * 32);
+			
+		}
+		
+		if(Values.electricityUsed > Values.electricity) {
+			g.drawString("Not enough electricity!", 32, 2 * 32);
+		}
+		
+		if(Values.availableJobs < Values.homes) {
+			g.drawString("Not enough jobs!", 32, 3 * 32);
+		}
+		
+		g.drawImage(image, hudX, hudY, null);
+		
 		g.setColor(Color.BLACK);
 
 		//panell selection icons
-		g.drawImage(image, hudX, hudY, null);
-		for (int i = 0; i < circleNum; i++) {
-			g.drawImage(circle, ((hudX + image.getWidth() / 2) - circleWidth / 2) - ((circleNum - 1) * circleSpacing) / 2 + i * circleSpacing, hudY - 40, null);
-			g.drawImage(panels[i], ((hudX + image.getWidth() / 2) - circleWidth / 2) - ((circleNum - 1) * circleSpacing) / 2 + i * circleSpacing + 8, hudY - 40 + 8, null);
-		}
+//		g.drawImage(image, hudX, hudY, null);
+//		for (int i = 0; i < circleNum; i++) {
+//			g.drawImage(circle, ((hudX + image.getWidth() / 2) - circleWidth / 2) - ((circleNum - 1) * circleSpacing) / 2 + i * circleSpacing, hudY - 40, null);
+//			g.drawImage(panels[i], ((hudX + image.getWidth() / 2) - circleWidth / 2) - ((circleNum - 1) * circleSpacing) / 2 + i * circleSpacing + 8, hudY - 40 + 8, null);
+//		}
 
 		leftPanel(g);
 
@@ -131,10 +146,26 @@ public class HUD {
 	}
 
 	public void leftPanel(Graphics2D g) {
-		date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
-		g.drawString("Money: $50,000,000", hudX + 50, hudY + 45 + 0 * 32);
-		g.drawString("Population: 46,538", hudX + 50, hudY + 45 + 1 * 32);
-		g.drawString(date, hudX + 50, hudY + 45 + 2 * 32);
+		g.drawString("Money: " + Values.money + "$", hudX + 50, hudY + 45 + 0 * 32);
+		g.drawString("Population: " + Values.population, hudX + 50, hudY + 45 + 1 * 32);
+		g.drawString("Day: " + Values.day, hudX + 50, hudY + 45 + 2 * 32);
+		
+		g.drawString("Power: " + Values.electricityUsed + "/" + Values.electricity + "MW/day", hudX + 250, hudY + 45 + 0 * 32);
+		g.drawString("Water: " + Values.waterUsed + "/" + Values.water + " L/day", hudX + 250, hudY + 45 + 1 * 32);
+		
+		g.drawString("Jobs: " + Values.availableJobs, hudX + 550, hudY + 45 + 0 * 32);
+		g.drawString("Daily income: " + Values.dailyTaxes + "$", hudX + 550, hudY + 45 + 1 * 32);
+		g.drawString("Daily expenses: " + Values.dailyMaintenace + "$", hudX + 550, hudY + 45 + 2 * 32);
+		
+		g.setColor(Color.BLACK);
+		g.fillRect(hudX + 158, hudY + 90, 54, 20);
+		
+		
+		int dayBar = (int) (PlayState.elapsed * 100 / Values.dayLength / 2);
+		
+		g.setColor(Color.ORANGE);
+		g.fillRect(hudX + 160, hudY + 92, dayBar, 16);
+		
 	}
 	
 	public void panel1(Graphics2D g) { //Roads

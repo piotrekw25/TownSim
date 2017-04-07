@@ -23,7 +23,7 @@ public class TileMap {
 	private double tween;
 
 	// map
-	private int[][] map;
+	public int[][] map;
 	private int tileSize;
 	private int numRows;
 	private int numCols;
@@ -36,8 +36,8 @@ public class TileMap {
 	private Tile[][] tiles;
 
 	// drawing
-	private int rowOffset;
-	private int colOffset;
+	public int rowOffset;
+	public int colOffset;
 	private int numRowsToDraw;
 	private int numColsToDraw;
 

@@ -26,4 +26,9 @@ public abstract class GameState {
 
 	}
 
+	public void press(int button) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

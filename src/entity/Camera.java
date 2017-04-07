@@ -16,9 +16,9 @@ public class Camera extends MapObject {
 		cwidth = 64;
 		cheight = 64;
 
-		moveSpeed = 1.0;
+		moveSpeed = 10.0;
 		maxSpeed = 10.0;
-		stopSpeed = 1.0;
+		stopSpeed = 10.0;
 	}
 
 	private void getNextPosition() {
